@@ -9,11 +9,11 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f4f4f9;
+      background: #f4f9ff;
       color: #333;
     }
     header {
-      background: #6a1b9a;
+      background: #1565c0;
       color: white;
       padding: 20px;
       text-align: center;
@@ -39,8 +39,8 @@
     .progress-bar span {
       display: block;
       height: 100%;
-      background: #43a047;
-      width: 40%; /* Update percentage here */
+      background: #1e88e5;
+      width: 0%; /* Update percentage here */
       text-align: center;
       color: white;
       line-height: 25px;
@@ -56,17 +56,41 @@
       text-align: left;
     }
     th {
-      background: #6a1b9a;
+      background: #1565c0;
       color: white;
     }
     footer {
-      background: #6a1b9a;
+      background: #1565c0;
       color: white;
       text-align: center;
       padding: 15px;
       margin-top: 20px;
     }
+    .search-box {
+      margin: 15px 0;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
   </style>
+  <script>
+    function searchAdmission() {
+      let input = document.getElementById("searchInput").value.toUpperCase();
+      let table = document.getElementById("donationTable");
+      let tr = table.getElementsByTagName("tr");
+
+      for (let i = 1; i < tr.length; i++) {
+        let td = tr[i].getElementsByTagName("td")[0]; // Admission No column
+        if (td) {
+          let txtValue = td.textContent || td.innerText;
+          tr[i].style.display = txtValue.toUpperCase().indexOf(input) > -1 ? "" : "none";
+        }
+      }
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -79,34 +103,33 @@
     <p>
       A one-month fundraising campaign by students of <b>Sree Gokulam Public School</b>
       to support a kidney transplant patient. The site displays collected funds,
-      allows adding donations with student names and amounts, and keeps everyone updated transparently.
+      allows adding donations with admission numbers and amounts, and keeps everyone updated transparently.
     </p>
 
     <h2>Fundraising Progress</h2>
     <div class="progress">
       <div class="progress-bar">
-        <span>40% (₹40,000 of ₹1,00,000)</span>
+        <span style="width: 0%;">₹0 of ₹1,00,000</span>
       </div>
     </div>
 
+    <h2>Search Donations</h2>
+    <div class="search-box">
+      <input type="text" id="searchInput" onkeyup="searchAdmission()" placeholder="Search by Admission Number...">
+    </div>
+
     <h2>Donations</h2>
-    <table>
+    <table id="donationTable">
       <tr>
-        <th>Student Name</th>
         <th>Admission No.</th>
         <th>Amount Donated (₹)</th>
       </tr>
+      <!-- Example row:
       <tr>
-        <td>Anjali R</td>
         <td>1023</td>
         <td>500</td>
       </tr>
-      <tr>
-        <td>Rahul M</td>
-        <td>1056</td>
-        <td>1000</td>
-      </tr>
-      <!-- Add more rows here -->
+      -->
     </table>
 
     <h2>Contact Us</h2>
