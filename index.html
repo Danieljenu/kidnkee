@@ -6,139 +6,172 @@
   <title>Gokulites for Kidney Care</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f4f9ff;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
       color: #333;
     }
+
+    /* Navbar */
     header {
-      background: #1565c0;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 { margin: 0; }
-    .container {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 20px;
       background: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #2a7ae4;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url("hello.png") center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      margin: 0;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .progress {
-      margin: 20px 0;
-    }
-    .progress-bar {
-      height: 25px;
-      background: #ddd;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-    .progress-bar span {
-      display: block;
-      height: 100%;
-      background: #1e88e5;
-      width: 0%; /* Update percentage here */
-      text-align: center;
-      color: white;
-      line-height: 25px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    th {
-      background: #1565c0;
-      color: white;
-    }
-    footer {
-      background: #1565c0;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-    }
-    .search-box {
+    .hero p {
+      font-size: 1.2rem;
       margin: 15px 0;
     }
-    .search-box input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
+    .hero button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background: #28a745;
+      border: none;
+      color: white;
+      cursor: pointer;
       border-radius: 5px;
     }
-  </style>
-  <script>
-    function searchAdmission() {
-      let input = document.getElementById("searchInput").value.toUpperCase();
-      let table = document.getElementById("donationTable");
-      let tr = table.getElementsByTagName("tr");
+    .hero button:hover {
+      background: #218838;
+    }
 
-      for (let i = 1; i < tr.length; i++) {
-        let td = tr[i].getElementsByTagName("td")[0]; // Admission No column
-        if (td) {
-          let txtValue = td.textContent || td.innerText;
-          tr[i].style.display = txtValue.toUpperCase().indexOf(input) > -1 ? "" : "none";
-        }
+    /* Sections */
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #2a7ae4;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
       }
     }
-  </script>
+  </style>
 </head>
 <body>
+
+  <!-- Navbar -->
   <header>
-    <h1>Gokulites for Kidney Care</h1>
-    <p>Students united to save a life</p>
+    <h1>GOKULITES FOR KIDNEY CARE</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <div class="container">
-    <h2>About the Campaign</h2>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <h2>Support Kidney Patients</h2>
+    <p>Join us to make a big impact</p>
+    <button onclick="document.getElementById('about').scrollIntoView()">Learn More</button>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h3>About Our Mission</h3>
     <p>
-      A one-month fundraising campaign by students of <b>Sree Gokulam Public School</b>
-      to support a kidney transplant patient. The site displays collected funds,
-      allows adding donations with admission numbers and amounts, and keeps everyone updated transparently.
+      Gokulites for Kidney Care is a dedicated initiative led by students of 
+      <b>Sree Gokulam Public School</b>, aiming to raise funds for a local 
+      kidney patient in urgent need of a transplant. Our goal is to bring 
+      hope, healing, and support through collective efforts.
     </p>
+  </section>
 
-    <h2>Fundraising Progress</h2>
-    <div class="progress">
-      <div class="progress-bar">
-        <span style="width: 0%;">₹0 of ₹1,00,000</span>
-      </div>
-    </div>
+  <!-- Services Section -->
+  <section id="services">
+    <h3>How You Can Help</h3>
+    <ul>
+      <li>Donate directly (bank/UPI details shared in school).</li>
+      <li>Share our campaign with friends and family.</li>
+      <li>Volunteer to organize events or spread awareness.</li>
+    </ul>
+  </section>
 
-    <h2>Search Donations</h2>
-    <div class="search-box">
-      <input type="text" id="searchInput" onkeyup="searchAdmission()" placeholder="Search by Admission Number...">
-    </div>
+  <!-- Team Section -->
+  <section id="team">
+    <h3>Our Team</h3>
+    <p>We are the Gokulites — students, teachers, and staff united for a life-saving cause.</p>
+  </section>
 
-    <h2>Donations</h2>
-    <table id="donationTable">
-      <tr>
-        <th>Admission No.</th>
-        <th>Amount Donated (₹)</th>
-      </tr>
-      <!-- Example row:
-      <tr>
-        <td>1023</td>
-        <td>500</td>
-      </tr>
-      -->
-    </table>
+  <!-- Contact Section -->
+  <section id="contact">
+    <h3>Contact Us</h3>
+    <p>Email: gokulitesfund@example.com</p>
+    <p>Phone: +91 98765 43210</p>
+  </section>
 
-    <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:gokulites@school.com">gokulites@school.com</a></p>
-    <p>Phone: +91-XXXXXXXXXX</p>
-  </div>
-
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Gokulites for Kidney Care | Sree Gokulam Public School</p>
+    <p>© 2025 Gokulites for Kidney Care | All Rights Reserved</p>
   </footer>
+
 </body>
 </html>
